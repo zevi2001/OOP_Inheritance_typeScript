@@ -28,3 +28,13 @@ class Shape extends Rectangle {
     return "this is a Shape";
   }
 }
+class ColoredRectangle extends Rectangle {
+  color: string;
+  constructor(color: string, hight: number, width: number) {
+    super(hight, width);
+    this.color = color;
+  }
+  info() {
+    return "this is a Rectangle with " + this.color + " color";
+  }
+}
