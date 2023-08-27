@@ -11,6 +11,14 @@ class Rectangle {
   info() {
     return "this is a Rectangle";
   }
+  scale(num: number, str: string) {
+    if (str === "hight") {
+      this.hight = num;
+    } else if (str === "width") {
+      this.width = num;
+    }
+  }
+  
 }
 class Square extends Rectangle {
   rib: number;
@@ -21,6 +29,9 @@ class Square extends Rectangle {
   }
   arae() {
     return this.rib * 4;
+  }
+  info() {
+    return "this is a Rectangle";
   }
 }
 class Shape extends Rectangle {
@@ -36,5 +47,10 @@ class ColoredRectangle extends Rectangle {
   }
   info() {
     return "this is a Rectangle with " + this.color + " color";
+  }
+}
+class Triangle extends Shape  {
+  info() {
+    return "this is a Triangle";
   }
 }
