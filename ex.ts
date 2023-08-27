@@ -1,22 +1,19 @@
- class Person {
+class Person {
   firstName: string;
   lastName: string;
-   id:number;
-  constructor(firstName: string, lastName: string,id:number) {
+  id: number;
+  constructor(firstName: string, lastName: string, id: number) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.id=id
+    this.id = id;
   }
-
 }
 class Patient extends Person {
-  constructor( firstName: string, lastName: string,id:number) {
-    super(firstName, lastName,id);
+  constructor(firstName: string, lastName: string, id: number) {
+    super(firstName, lastName, id);
   }
   printPatient() {
-    console.log(
-      this.firstName + " , " + this.lastName + " , " + this.id
-    );
+    console.log(this.firstName + " , " + this.lastName + " , " + this.id);
   }
 }
 class Doctor extends Person {
@@ -27,7 +24,7 @@ class Doctor extends Person {
     firstName: string,
     lastName: string
   ) {
-    super(firstName, lastName,doctorID);
+    super(firstName, lastName, doctorID);
     this.specialization = specialization;
   }
   printDoctor() {
@@ -43,8 +40,6 @@ class Doctor extends Person {
   }
 }
 class Appointment {
-  // moshe = new Patient(51, "moshe", "levi");
-  //david = new doctor("legs", 799, "david", "choen");
   patient: Patient;
   doctor: Doctor;
   date: string;
@@ -88,46 +83,45 @@ class Hospital {
   }
   printAppointments() {
     for (let i = 0; i < this.Appointments.length; i++) {
-      console.log(this.Appointments[i].printAppointment());
+    this.Appointments[i].printAppointment();
     }
   }
   printAppointmentsByDoctorId(id: number) {
     for (let i = 0; i < this.Appointments.length; i++) {
       if (this.Appointments[i].doctor.id === id) {
-        console.log(this.Appointments[i].printAppointment());
+        this.Appointments[i].printAppointment();
       }
     }
   }
   printAppointmentsByPatientId(id: number) {
     for (let i = 0; i < this.Appointments.length; i++) {
       if (this.Appointments[i].patient.id === id) {
-        console.log(this.Appointments[i].printAppointment());
+        this.Appointments[i].printAppointment();
       }
     }
   }
-  printAppointmentsByDate(date:string) {
+  printAppointmentsByDate(date: string) {
     for (let i = 0; i < this.Appointments.length; i++) {
-      if (this.Appointments[i].date ===date) {
-        console.log(this.Appointments[i].printAppointment());
+      if (this.Appointments[i].date === date) {
+        this.Appointments[i].printAppointment();
       }
     }
   }
 }
 
 const hospital = new Hospital(" my hospital ");
-const patient1 = new Patient("שמעון", "כהן", 1);
-const doctor1 = new Doctor("לב", 101, "דוד", "כהן");
+const patient1 = new Patient("dudu", "choen", 1);
+const doctor1 = new Doctor("hart", 101, "david", "levi");
 const appointment1 = new Appointment(patient1, doctor1, "2023-09-01", "10:00");
 
 hospital.addPatient(patient1);
 hospital.addDoctor(doctor1);
 hospital.addAppointment(appointment1);
-console.log("כל התורים בבית החולים:");
+console.log("all the Appointment");
 hospital.printAppointments();
-console.log("תורים לפי תעודת זהות של רופא 101:");
+console.log("Appointment by id 101");
 hospital.printAppointmentsByDoctorId(101);
-console.log("תורים לפי תעודת זהות של מטופל 1:");
+console.log(" Appointment by Patient id 1");
 hospital.printAppointmentsByPatientId(1);
-console.log("תורים לתאריך 2023-09-01:");
+console.log(" Appointment to date 2023-09-01 ");
 hospital.printAppointmentsByDate("2023-09-01");
-
