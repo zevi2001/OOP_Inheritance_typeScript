@@ -1,16 +1,16 @@
 abstract class Person {
   firstName: string;
   lastName: string;
-  constructor(firstName: string, lastName: string) {
+  id:number
+  constructor(firstName: string, lastName: string,id:number) {
     this.firstName = firstName;
     this.lastName = lastName;
+    this.id=id
   }
 }
 class Patient extends Person {
-  patientID: number;
-  constructor(patientID: number, firstName: string, lastName: string) {
-    super(firstName, lastName);
-    this.patientID = patientID;
+  constructor( firstName: string, lastName: string,id:number) {
+    super(firstName, lastName,id);
   }
   printPatient() {
     console.log(
@@ -19,7 +19,6 @@ class Patient extends Person {
   }
 }
 class Doctor extends Person {
-  doctorID: number;
   specialization: string;
   constructor(
     specialization: string,
@@ -27,8 +26,7 @@ class Doctor extends Person {
     firstName: string,
     lastName: string
   ) {
-    super(firstName, lastName);
-    this.doctorID = doctorID;
+    super(firstName, lastName,doctorID);
     this.specialization = specialization;
   }
   printDoctor() {
