@@ -23,4 +23,8 @@ class Square extends Rectangle {
     return this.rib * 4;
   }
 }
-
+class Shape extends Rectangle {
+  info() {
+    return "this is a Shape";
+  }
+}
