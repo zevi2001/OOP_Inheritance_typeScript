@@ -1,12 +1,13 @@
-abstract class Person {
+ class Person {
   firstName: string;
   lastName: string;
-  protected id:number
+   id:number;
   constructor(firstName: string, lastName: string,id:number) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.id=id
   }
+
 }
 class Patient extends Person {
   constructor( firstName: string, lastName: string,id:number) {
@@ -14,7 +15,7 @@ class Patient extends Person {
   }
   printPatient() {
     console.log(
-      this.firstName + " , " + this.lastName + " , " + this.patientID
+      this.firstName + " , " + this.lastName + " , " + this.id
     );
   }
 }
@@ -35,7 +36,7 @@ class Doctor extends Person {
         " , " +
         this.lastName +
         " , " +
-        this.doctorID +
+        this.id +
         " " +
         this.specialization
     );
@@ -86,20 +87,20 @@ class Hospital {
     this.Appointments.push(a);
   }
   printAppointments() {
-    for (let i = 0; i < Appointment.length; i++) {
+    for (let i = 0; i < this.Appointments.length; i++) {
       console.log(this.Appointments[i].printAppointment());
     }
   }
   printAppointmentsByDoctorId(id: number) {
     for (let i = 0; i < this.Appointments.length; i++) {
-      if (this.Appointments[i].doctor.doctorID === id) {
+      if (this.Appointments[i].doctor.id === id) {
         console.log(this.Appointments[i].printAppointment());
       }
     }
   }
   printAppointmentsByPatientId(id: number) {
     for (let i = 0; i < this.Appointments.length; i++) {
-      if (this.Appointments[i].patient.patientID === id) {
+      if (this.Appointments[i].patient.id === id) {
         console.log(this.Appointments[i].printAppointment());
       }
     }
@@ -113,4 +114,20 @@ class Hospital {
   }
 }
 
+const hospital = new Hospital(" my hospital ");
+const patient1 = new Patient("שמעון", "כהן", 1);
+const doctor1 = new Doctor("לב", 101, "דוד", "כהן");
+const appointment1 = new Appointment(patient1, doctor1, "2023-09-01", "10:00");
+
+hospital.addPatient(patient1);
+hospital.addDoctor(doctor1);
+hospital.addAppointment(appointment1);
+console.log("כל התורים בבית החולים:");
+hospital.printAppointments();
+console.log("תורים לפי תעודת זהות של רופא 101:");
+hospital.printAppointmentsByDoctorId(101);
+console.log("תורים לפי תעודת זהות של מטופל 1:");
+hospital.printAppointmentsByPatientId(1);
+console.log("תורים לתאריך 2023-09-01:");
+hospital.printAppointmentsByDate("2023-09-01");
 
